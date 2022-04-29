@@ -1,10 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 
+:root {
+  --blackBg: rgb(0, 0, 0, 0.65);
+}
 
 body {
   margin: 0;
   font-family: 'Quicksand', sans-serif;
+  overflow-y: scroll;
 }
 
 .container {
@@ -18,11 +22,12 @@ body {
   background-image: url('./img/bg.jpeg');
   background-attachment: fixed;
   background-size: cover;
+  gap: 20px;
 }
 
 .head {
   grid-area: header;
-  background-color: rgb(0, 0, 0, 0.6);
+  background-color: var(--blackBg);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,10 +46,11 @@ body {
   display: flex;
   gap: 10px;
   font-family: 'Quicksand', sans-serif;
+  transition: transform 0.3s;
 }
 
 .nav>* {
-  transition: 0.3s;
+  transition: transform 0.3s;
   padding: 10px;
 }
 
@@ -55,21 +61,25 @@ body {
 
 .nav>*.selected {
   border-bottom: 2px white solid;
+  box-sizing: border-box;
 }
 
 
 .bodyContent {
   grid-area: bodyContent;
-  min-height: calc(100vh - 200px);
+  min-height: calc(100vh - 240px);
+  display: flex;
+  justify-content: center;
 }
 
 .footer {
   grid-area: footer;
-  background-color: rgb(0, 0, 0, 0.6);
+  background-color: var(--blackBg);
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 
 .copyText {
@@ -81,15 +91,116 @@ body {
 .footer a {
   text-decoration: none;
   color: white;
-}
-
-.footer+span {
   background-image: url('./img/GitHub.png');
   background-size: cover;
   width: 20px;
   height: 20px;
-  display: inline-flex;
-  margin-left: 10px;
+  display: inline-block;
+  transition: 0.3s;
 }
 
+.footer a:hover {
+  opacity: 0.5;
+  transition: 0.3s;
+  transform: rotate(360deg);
+}
 
+.contentField {
+  background-color: var(--blackBg);
+  width: min(700px);
+  min-height: 100px;
+  transition: 1s;
+  border-radius: 3px;
+}
+
+.mainPage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  align-items: center;
+  height: 90%;
+}
+
+.mainImg {
+  background-image: url('./img/ava.jpeg');
+  background-repeat: no-repeat;
+  background-size: 250px 250px;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  justify-self: center;
+}
+
+.mainText {
+  color: white;
+  font-size: 1.3rem;
+}
+
+.cards {
+  padding: 20px;
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: var(--blackBg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 30px;
+  transition: 0.5s;
+  border-radius: 3px;
+}
+
+.card:hover {
+  background-color: rgba(135, 135, 135, 0.5);
+  transition: 0.5s;
+}
+
+.card img {
+  width: 150px;
+}
+
+.card>div {
+  font-size: 1.5rem;
+}
+
+.card>div:last-child {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.contactsData {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 20px;
+  align-items: center;
+}
+
+.contactsData img {
+  width: 90%;
+  margin-top: 10px;
+  border-radius: 3px;
+}
+
+.contactsData p {
+  margin: 5px;
+}
+
+.centerContentField {
+  display: flex;
+  align-items: center;
+}
+
+.contentField * {
+  transition: opacity 1s;
+}
+
+.contentField.hidden *{
+  opacity: 0;
+}
